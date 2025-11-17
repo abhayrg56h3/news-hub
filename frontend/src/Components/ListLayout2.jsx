@@ -548,7 +548,7 @@ const ListLayout2 = ({ type, list }) => {
               {recentArticles?.map((post, index) => (
                 <div key={post.id} className="flex gap-4 group cursor-pointer">
                   <div className="w-16 h-16 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex-shrink-0 overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105 relative">
-                    <img src={post.image} alt="" className="w-full h-full object-cover" />
+                    <img loading="lazy" src={post.image} alt="" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                   <div className="flex-1 min-w-0">
@@ -633,6 +633,7 @@ const ListLayout2 = ({ type, list }) => {
                             ) : type=="sources" ?(
                               <div className="w-12 h-12 sm:w-14 sm:h-14 group-hover:scale-110 transition-all duration-500 flex-shrink-0">
                                 <img 
+                                  loading="lazy"
                                   src={sourceMap[category?.name]?.logo} 
                                   alt={category.name} 
                                   className="w-full h-full object-contain rounded-xl shadow-lg" 
@@ -817,7 +818,7 @@ const ListLayout2 = ({ type, list }) => {
             {recentArticles?.map((post) => (
               <div key={post.id} className="flex gap-4 group cursor-pointer">
                 <div className="w-14 h-14 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex-shrink-0 overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-                  <img src={post.image} alt="" className="w-full h-full object-cover" />
+                  <img loading="lazy" src={post.image} alt="" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-2">

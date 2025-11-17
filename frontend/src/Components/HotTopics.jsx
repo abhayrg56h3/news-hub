@@ -497,6 +497,7 @@ const HotTopics = () => {
                     onClick={() => navigate(`/sourcelist/${hotTopics[0]?.source}`)}
                     src={sourceMap[hotTopics[0]?.source]?.logo}
                     alt={hotTopics[0]?.source}
+                    loading="lazy"
                     className="w-10 h-10 lg:w-12 lg:h-12 cursor-pointer rounded-full mr-4 border-2 border-white/30 hover:border-white/60 transition-colors duration-300"
                   />
                   <div className="text-sm lg:text-base">
@@ -559,6 +560,7 @@ const HotTopics = () => {
                   <img
                     src={article.image}
                     alt={article.title}
+                    loading="lazy"
                     className="w-full h-64 sm:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 ) : (
@@ -616,6 +618,7 @@ const HotTopics = () => {
                       onClick={() => navigate(`/sourcelist/${article.source}`)}
                       src={sourceMap[article.source]?.logo}
                       alt={article.source}
+                      loading="lazy"
                       className="w-8 h-8 cursor-pointer rounded-full mr-3 border border-white/30 hover:border-white/60 transition-colors duration-300"
                     />
                     <div className="text-sm">

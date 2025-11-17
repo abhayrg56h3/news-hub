@@ -354,6 +354,7 @@ const DailyInsightsCard = ({
       {/* Image Section */}
       <div className="relative overflow-hidden">
         <img
+          loading="lazy"
           src={article?.image ?? '/placeholder.png'}
           alt={article?.title ?? 'Article image'}
           className="w-full h-32 sm:h-40 md:h-48 object-cover transition-transform duration-700 group-hover:scale-110"
@@ -416,6 +417,7 @@ const DailyInsightsCard = ({
               : 'bg-gray-700 ring-gray-600 hover:ring-gray-500'
             }`}>
             <img
+              loading="lazy"
               src={sourceMap[article?.source]?.logo ?? '/logo-placeholder.png'}
               alt={article?.source}
               className="w-full h-full object-contain p-1"

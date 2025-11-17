@@ -80,6 +80,7 @@ const ArticleCard = ({ article, index, lightMode, currUser }) => {
           <img
             src={article.image}
             alt={article.title}
+            loading="lazy"
             className="w-full h-32 sm:h-36 object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
             onError={(e) => { e.target.style.display = 'none'; }}
           />
@@ -203,6 +204,7 @@ const ArticleCard = ({ article, index, lightMode, currUser }) => {
                 onClick={() => navigate(`/sourcelist/${article.source}`)}
                 src={sourceMap[article.source]?.logo || "/fallback.png"}
                 alt={article.source}
+                loading="lazy"
                 className={`w-8 h-8 cursor-pointer rounded-full object-cover hover:scale-110 hover:rotate-3 shadow-md ring-2 ${lightMode ? 'ring-white' : 'ring-gray-700'
                   }`}
               />

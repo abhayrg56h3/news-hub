@@ -977,7 +977,7 @@ export default function ListLayout1({ type }) {
             }`}>
               {topic ? topic : source ? source : region ? region : "Bookmarked Articles"}
             </h1>
-            {source && <img className="w-16 h-16 sm:w-20 sm:h-20" src={sourceMap[source]?.logo} alt="Source logo" />}
+            {source && <img loading="lazy" className="w-16 h-16 sm:w-20 sm:h-20" src={sourceMap[source]?.logo} alt="Source logo" />}
           </div>
         </div>
       </div>
@@ -1000,7 +1000,7 @@ export default function ListLayout1({ type }) {
                   {recentArticles?.map((post, index) => (
                     <div key={post.id} className="flex gap-3 sm:gap-4 group cursor-pointer">
                       <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex-shrink-0 overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105 relative">
-                        <img src={post.image} alt="" className="w-full h-full object-cover" />
+                        <img loading="lazy" src={post.image} alt="" className="w-full h-full object-cover" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
                       <div className="flex-1 min-w-0">
@@ -1144,6 +1144,7 @@ export default function ListLayout1({ type }) {
                       {/* Enhanced IMAGE */}
                       <div className="w-full sm:w-72 h-48 sm:h-auto relative group/image overflow-hidden sm:rounded-l-2xl">
                         <img
+                          loading="lazy"
                           src={article.image || "/img1.png"}
                           alt={article.title}
                           className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
@@ -1243,6 +1244,7 @@ export default function ListLayout1({ type }) {
                           {sourceMap[article.source] ? (
                             <div className="relative">
                               <img
+                                loading="lazy"
                                 src={sourceMap[article.source]?.logo}
                                 alt="source logo"
                                 className={`w-12 h-12 object-contain rounded-full border-2 shadow-lg transition-transform duration-300 hover:scale-110 ${lightMode ? 'bg-white border-gray-200' : 'bg-gray-700 border-gray-600'

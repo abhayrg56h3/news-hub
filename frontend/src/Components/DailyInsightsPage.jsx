@@ -1119,6 +1119,7 @@ export default function DailyInsightsPage() {
                           {/* Enhanced IMAGE */}
                           <div className="w-full sm:w-72 h-48 sm:h-auto relative group/image overflow-hidden sm:rounded-l-2xl">
                             <img
+                                loading="lazy"
                               src={article.image || "/img1.png"}
                               alt={article.title}
                               className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
@@ -1218,6 +1219,7 @@ export default function DailyInsightsPage() {
                               {sourceMap[article.source] ? (
                                 <div className="relative">
                                   <img
+                                  loading="lazy"
                                     src={sourceMap[article.source]?.logo}
                                     alt="source logo"
                                     className={`w-12 h-12 object-contain rounded-full border-2 shadow-lg transition-transform duration-300 hover:scale-110 ${lightMode ? 'bg-white border-gray-200' : 'bg-gray-700 border-gray-600'
@@ -1369,3 +1371,6 @@ export default function DailyInsightsPage() {
         </div>
   );
 }
+
+
+
