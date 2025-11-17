@@ -4,8 +4,9 @@ import { initModel } from "../ai-services/summarizer.js";
 import dotenv from 'dotenv';
 dotenv.config();
 
-const a4fApiKey = process.env.a4fApiKey;
+const a4fApiKey = "ddc-a4f-81a9d6553f51468aa27f1a7953c87d4d";
 const a4fBaseUrl = 'https://api.a4f.co/v1';
+const model="provider-3/llama-3.2-3b";
 
 if (!a4fApiKey) {
   throw new Error("❌ A4F_API_KEY is not set in environment variables");
@@ -19,7 +20,7 @@ const a4fClient = new OpenAI({
 async function isBreakingNews(articleText) {
   try {
     const response = await a4fClient.chat.completions.create({
-      model: "provider-6/gpt-4.1",
+      model: "provider-3/llama-3.2-3b",
       messages: [
         {
           role: "system",
@@ -44,14 +45,20 @@ Only respond with a number (0 to 100). Output must be a number. No explanations.
     const score = parseInt(reply) || 0;
     console.log("Breaking Score:", score);
     return score;
-  } catch (err) {
-    console.error(`❌ Error detecting breaking news:`, err.message);
-    return {
-      error: "API_CALL_FAILED",
-      score: 0,
-      message: err.message || "Failed to analyze breaking news"
-    };
-  }
+  }catch (err) {
+  console.error("❌ API CALL ERROR:");
+  // Print helpful fields safely (avoid printing raw API key)
+  console.error("message:", err.message);
+  console.error("name:", err.name);
+  console.error("stack:", err.stack);
+  console.error("status:", err.response?.status ?? err.status ?? "unknown");
+  console.error("response.data:", JSON.stringify(err.response?.data ?? err.body ?? err, null, 2));
+  return {
+    error: "API_CALL_FAILED",
+    score: 0,
+    message: err.message ?? "Unknown error"
+  };
+}
 }
 
 
@@ -61,7 +68,7 @@ Only respond with a number (0 to 100). Output must be a number. No explanations.
 async function summarizeChunk(text) {
   try {
     const response = await a4fClient.chat.completions.create({
-      model: "provider-6/gpt-4.1",
+      model: model,
       messages: [
         {
           role: "system",
@@ -139,7 +146,7 @@ async function getTopic(articleText) {
 
   try {
     const response = await a4fClient.chat.completions.create({
-      model: "provider-6/gpt-4.1",
+     model: model,
       messages: [
         {
           role: "system",
@@ -213,7 +220,7 @@ async function getRegion(articleText) {
 
   try {
     const response = await a4fClient.chat.completions.create({
-      model: "provider-6/gpt-4.1",
+      model: model,
       messages: [
         {
           role: "system",
@@ -245,7 +252,7 @@ If no match, return "World". Do not explain. No punctuation. No abbreviations.`
 async function getSentiment(articleText) {
   try {
     const response = await a4fClient.chat.completions.create({
-      model: "provider-2/gpt-3.5-turbo",
+      model: model,
       messages: [
         {
           role: "system",
@@ -283,7 +290,7 @@ async function getSentiment(articleText) {
 async function getTags(articleText) {
   try {
     const response = await a4fClient.chat.completions.create({
-      model: "provider-6/gpt-4.1",
+     model: model,
       messages: [
         {
           role: "system",
